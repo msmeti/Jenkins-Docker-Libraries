@@ -1,0 +1,4 @@
+ Run maven from cmd line
+
+   
+export PATH="/home/dell/Desktop/Jenkins-CI-Introduction/Day4/apache-maven-3.5.0/bin:$PATH"

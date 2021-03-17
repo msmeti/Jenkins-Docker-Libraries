@@ -1,0 +1,13 @@
+ node ('master'){
+  git branch: 'master',credentialsId: 'pr-jenkins-user',
+    poll: true, url: 'https://github.com/pbadhe34/Maven-REST-Service.git'
+
+//checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/pbadhe34/Maven-REST-Service.git']]]
+
+  def mvnHome = tool 'maven3.5'
+  env.PATH = "${mvnHome}/bin:${env.PATH}"
+  sh 'mvn -B verify'
+  sh 'mvn clean install package'
+  //step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])
+  step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}

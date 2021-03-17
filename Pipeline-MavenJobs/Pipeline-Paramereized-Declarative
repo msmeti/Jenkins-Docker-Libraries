@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'Message', defaultValue: 'Welcome', description: 'How should I message the world?')
+    }
+    stages {
+        stage('Access') {
+            steps {
+                echo "${params.Message} User!"
+            }
+        }
+    }
+}

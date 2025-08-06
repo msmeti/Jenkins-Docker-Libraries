@@ -1,6 +1,6 @@
 #dockerffile contents
 
-FROM ubuntu
+FROM ubuntu:24.10
 ADD file1 /ubuntu1/file
 VOLUME /ubuntu1
 CMD /bin/sh
